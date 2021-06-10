@@ -1,9 +1,11 @@
 {
-    "name": "basic",
+    "name": "yukiice_cli",
     "version": "1.0.0",
-    "main": "src/index.js",
+    "main": "index.js",
+    "bin": {
+        "yukiice": "index.js"
+    },
     "scripts": {
-        "start": "nodemon index.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
@@ -11,7 +13,7 @@
     "license": "ISC",
     "description": "",
     "dependencies": {
-        "axios": "^0.21.1",
-        "commander": "^7.2.0"
+        "commander": "^7.2.0",
+        "download-git-repo": "^3.0.2"
     }
 }
