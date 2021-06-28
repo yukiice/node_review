@@ -1,5 +1,6 @@
 const fs = require('fs');
 
-fs.readFile('./a.txt', (err, data) => {
-    console.log(data.toString())
-})
+const sharp = require('sharp');
+
+
+sharp('./a.png').resize(300, 300).toFile('./b.png')

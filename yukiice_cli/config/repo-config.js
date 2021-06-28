@@ -1,4 +1,4 @@
-const vueRepo = `direct:https://github.com/yukiice/repo-temp.git`
+const vueRepo = `https://github.com/yukiice/repo-temp#main`
 
 module.exports = {
     vueRepo

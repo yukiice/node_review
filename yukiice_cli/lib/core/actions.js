@@ -21,15 +21,16 @@ const createProjectAction = async(project) => {
     // 判断是unix还是windows
     const command = process.platform === 'win32' ? 'cnpm.cmd' : 'cnpm'
     console.log('please waiting a moment')
-        // clone 项目
-    await download(vueRepo, project)
+    // clone 项目
+    await download(vueRepo, project, {clone: true}, (err) => {
+        console.log(err)
+    })
 
     // // npm install
 
     // await commandSpawn(command, ['install'], {
     //     cwd: `./${project}`
     // })
-
 
 
     // // 运行
