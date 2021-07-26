@@ -8,4 +8,4 @@ app.use(async(ctx, next) => {
 
 app.listen(7001, () => {
     console.log('server is running on http://localhost:7001')
-})
+})1
