@@ -18,5 +18,5 @@ const statement = `
 SELECT * FROM product WHERE price > ? AND score > ?;
 `
 connection.execute(statement, [6000, 7], (err, results) => {
-        console.log(results)
+    console.log(results)
 })

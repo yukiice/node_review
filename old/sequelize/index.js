@@ -1,10 +1,11 @@
-const { Sequelize, DataTypes, Model, Op } = require('sequelize')
+const {Sequelize, DataTypes, Model, Op} = require('sequelize')
 const sequelize = new Sequelize('yukiicehub', 'root', '123456789', {
     host: 'localhost',
     dialect: 'mysql'
 })
 
-class Product extends Model {}
+class Product extends Model {
+}
 
 Product.init({
     id: {
@@ -51,4 +52,5 @@ async function createColumn() {
     })
     console.log(res)
 }
+
 createColumn()

@@ -1,0 +1,22 @@
+::1 - - [08/Dec/2021:14:07:52 +0000] "POST /upload HTTP/1.1" 200 15 "-" "PostmanRuntime/7.28.1"
+[0mPOST /upload [32m200[0m 23.639 ms - 15[0m
+[0mPOST /upload [32m200[0m 14.043 ms - 15[0m
+[0mPOST /login [32m200[0m 0.593 ms - 4[0m
+[0mPOST /login?name=yukiice&age=18 [32m200[0m 4.548 ms - 4[0m
+[0mPOST /login?name=yukiice&age=18 [32m204[0m 4.165 ms - -[0m
+[0mPOST /login?name=yukiice&age=18 [32m204[0m 0.797 ms - -[0m
+[0mPOST /login?name=yukiice&age=18 [32m204[0m 3.837 ms - -[0m
+[0mPOST /login?name=yukiice&age=18 [32m204[0m 3.976 ms - -[0m
+[0mPOST /login?name=yukiice&age=18 [32m204[0m 4.165 ms - -[0m
+[0mPOST /login?name=yukiice&age=18 [32m204[0m 0.474 ms - -[0m
+[0mPOST /login?name=yukiice&age=18 [32m204[0m 3.888 ms - -[0m
+[0mPOST /login?name=yukiice&age=18 [32m204[0m 0.807 ms - -[0m
+[0mPOST /login?name=yukiice&age=18 [32m204[0m 4.495 ms - -[0m
+[0mPOST /login?name=yukiice&age=18 [32m204[0m 3.807 ms - -[0m
+[0mPOST /login?name=yukiice&age=18 [32m204[0m 3.842 ms - -[0m
+[0mPOST /login?name=yukiice&age=18 [32m204[0m 4.199 ms - -[0m
+[0mPOST /login?name=yukiice&age=18 [32m204[0m 2.610 ms - -[0m
+[0mPOST /login?name=yukiice&age=18 [32m200[0m 2.591 ms - -[0m
+[0mPOST /login?name=yukiice&age=18 [32m200[0m 3.929 ms - 29[0m
+[0mPOST /login?name=yukiice&age=18 [32m200[0m 3.883 ms - 29[0m
+[0mPOST /register [33m400[0m 3.274 ms - 40[0m

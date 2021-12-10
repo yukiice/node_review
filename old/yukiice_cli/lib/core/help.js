@@ -8,7 +8,7 @@ const helpOptions = () => {
 
     // 其他
 
-    program.on('--help', function() {
+    program.on('--help', function () {
         console.log(' ')
         console.log('Other:')
         console.log(' other options')

@@ -2,9 +2,9 @@
 
 const program = require('commander')
 
-const { helpOptions } = require('./lib/core/help')
+const {helpOptions} = require('./lib/core/help')
 
-const { createCommands } = require('./lib/core/create')
+const {createCommands} = require('./lib/core/create')
 
 program.version(require("./package.json").version)
 

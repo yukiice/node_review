@@ -1,7 +1,7 @@
 const program = require('commander')
 
 // 导入action
-const { createProjectAction } = require('./actions')
+const {createProjectAction} = require('./actions')
 
 const createCommands = () => {
     program.command('create <project> [others...]')

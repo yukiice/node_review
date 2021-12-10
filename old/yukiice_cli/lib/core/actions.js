@@ -16,7 +16,7 @@ const {
     vueRepo
 } = require('../../config/repo-config')
 
-const createProjectAction = async(project) => {
+const createProjectAction = async (project) => {
 
     // 判断是unix还是windows
     const command = process.platform === 'win32' ? 'cnpm.cmd' : 'cnpm'
