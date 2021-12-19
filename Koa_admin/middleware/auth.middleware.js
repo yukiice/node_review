@@ -1,6 +1,8 @@
 const errorType = require("../contance/error.type");
 const service = require("../service/user.service");
 const md5Password = require("../utils/password-handle");
+const jwt = require('jsonwebtoken')
+const {PUBLIC_KEY} = require("../app/config");
 const verifyLogin = async (ctx, next) => {
     //获取用户信息
     const {name, password} = ctx.request.body
@@ -23,10 +25,27 @@ const verifyLogin = async (ctx, next) => {
         const error = new Error(errorType.PASSWORD_IS_INCORRENT)
         return ctx.app.emit('error', error, ctx)
     }
+    ctx.user = user
 //    一致
     await next()
 }
 
+const verifyAuth = async (ctx,next)=>{
+    const authorization  = ctx.headers.authorization
+    const token =  authorization.replace('Bearer ','')
+    try {
+        ctx.user = jwt.verify(token, PUBLIC_KEY, {
+            algorithms: ['RS256']
+        })
+        await  next()
+    }catch (err){
+        const error = new Error(errorType.UN_AUTHORIZATION)
+        ctx.app.emit('error',error,ctx)
+    }
+
+}
+
 module.exports = {
-    verifyLogin
+    verifyLogin,
+    verifyAuth
 }
