@@ -23,6 +23,10 @@ const errorHandle = (error, ctx) => {
             status = 401;
             message = 'token无效';
             break;
+        case errorType.ADD_ERROR:
+            status = 200;
+            message = '添加失败';
+            break;
         default:
             status = 404
             message = 'NOT FOUND'
