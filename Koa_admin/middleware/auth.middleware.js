@@ -1,8 +1,10 @@
 const errorType = require("../contance/error.type");
-const service = require("../service/user.service");
+const UserService = require("../service/user.service");
+const AuthService = require('../service/auth.service')
 const md5Password = require("../utils/password-handle");
 const jwt = require('jsonwebtoken')
 const {PUBLIC_KEY} = require("../app/config");
+//登录验证
 const verifyLogin = async (ctx, next) => {
     //获取用户信息
     const {name, password} = ctx.request.body
@@ -12,7 +14,7 @@ const verifyLogin = async (ctx, next) => {
         return ctx.app.emit('error', error, ctx)
     }
 //    判断用户是否存在
-    const res = await service.getUserByName(name)
+    const res = await UserService.getUserByName(name)
     const user = res[0]
     if (!user) {
         //    不存在
@@ -30,6 +32,7 @@ const verifyLogin = async (ctx, next) => {
     await next()
 }
 
+//验证用户是否登录
 const verifyAuth = async (ctx,next)=>{
     const authorization  = ctx.headers.authorization
     if (!authorization){
@@ -49,7 +52,24 @@ const verifyAuth = async (ctx,next)=>{
 
 }
 
+// 验证用户是否有权限
+const verifyPermission  = async (ctx,next)=>{
+        const [resourceKey] = Object.keys(ctx.params)
+        const tableName = resourceKey.replace('Id','')
+        const resourceId = ctx.params[resourceKey]
+        const {id} = ctx.user
+        try {
+            const isPermission = await  AuthService.checkMoment(tableName,resourceId,id)
+            if (!isPermission) throw new Error()
+            await  next()
+        }catch (err) {
+            const error = new  Error(errorType.UN_PERMISSION)
+            ctx.app.emit('error',error,ctx)
+        }
+    }
+
 module.exports = {
     verifyLogin,
-    verifyAuth
+    verifyAuth,
+    verifyPermission
 }

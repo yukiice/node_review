@@ -1,7 +1,7 @@
 const errorType = require('../contance/error.type')
 const errorHandle = (error, ctx) => {
     let status, message
-    console.log(error.message,'2')
+    console.log(error.message,'error-handle')
     switch (error.message) {
         case errorType.NAME_OR_PASSWORD_IS_REQUIRED:
             status = 400;
@@ -26,6 +26,14 @@ const errorHandle = (error, ctx) => {
         case errorType.ADD_ERROR:
             status = 200;
             message = '添加失败';
+            break;
+        case  errorType.UN_PERMISSION:
+           status = 403
+            message = '用户没有权限访问';
+           break;
+        case  errorType.CANT_DELETE:
+            status = 404
+            message = '操作失败';
             break;
         default:
             status = 404

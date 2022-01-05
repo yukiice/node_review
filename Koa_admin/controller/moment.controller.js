@@ -43,6 +43,27 @@ class MomentController {
         }
 
     }
+
+//    更新详情
+    async update(ctx,next){
+        const {momentId}  = ctx.params
+        const {content} =  ctx.request.body
+        const res = await  service.updateMomentById(content,momentId)
+        ctx.body = res[0]
+        await next()
+    }
+
+//    删除详情
+    async Delete(ctx,next){
+        const {momentId} = ctx.params
+        const res = await  service.deleteByMomentId(momentId)
+        try {
+            ctx.body = '删除成功'
+        }catch (err){
+            const error = new Error(errorType.CANT_DELETE)
+            return ctx.app.emit('error', error, ctx)
+        }
+    }
 }
 
 module.exports = new MomentController()
