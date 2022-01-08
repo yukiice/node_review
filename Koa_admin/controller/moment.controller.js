@@ -1,10 +1,11 @@
-const service = require('../service/moment.service')
+const momentService = require('../service/moment.service')
+const labelService = require('../service/label.service')
 const errorType = require("../contance/error.type");
 
 class MomentController {
     async create(ctx, next) {
         try {
-            await service.create(ctx.user.id, ctx.request.body)
+            await momentService.create(ctx.user.id, ctx.request.body)
             ctx.status = 200
             ctx.body = {
                 code: 0,
@@ -22,7 +23,7 @@ class MomentController {
         try {
             let query = ctx.query
             query.page = (query.page - 1).toString()
-            const res = await service.getAllList(query)
+            const res = await momentService.getAllList(query)
             if (res.length) {
                 ctx.body = res
                 await next()
@@ -36,7 +37,7 @@ class MomentController {
 //    查看详情
     async detail(ctx, next) {
         const {momentId} = ctx.params
-        const res = await service.getMomentDetailById(momentId)
+        const res = await momentService.getMomentDetailById(momentId)
         if (res.length) {
             ctx.body = res[0]
             await next()
@@ -48,7 +49,7 @@ class MomentController {
     async update(ctx,next){
         const {momentId}  = ctx.params
         const {content} =  ctx.request.body
-        const res = await  service.updateMomentById(content,momentId)
+        const res = await  momentService.updateMomentById(content,momentId)
         ctx.body = res[0]
         await next()
     }
@@ -56,13 +57,22 @@ class MomentController {
 //    删除详情
     async Delete(ctx,next){
         const {momentId} = ctx.params
-        const res = await  service.deleteByMomentId(momentId)
+        const res = await  momentService.deleteByMomentId(momentId)
         try {
             ctx.body = '删除成功'
         }catch (err){
             const error = new Error(errorType.CANT_DELETE)
             return ctx.app.emit('error', error, ctx)
         }
+        await next()
+    }
+//    动态添加标签接口
+    async momentAddLabel(ctx,next){
+        const {momentId} = ctx.params
+        const {labels} = ctx
+        const res = await labelService.addMomentLabel(momentId,labels)
+        ctx.body = res
+         await next()
     }
 }
 

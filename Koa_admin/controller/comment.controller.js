@@ -31,6 +31,19 @@ class commentController{
         ctx.body = res
         await  next()
     }
+//    获取评论
+    async getAll(ctx,next){
+        //做判断
+        let res
+        const {content,name} = ctx.request.body
+        if (Object.keys(ctx.request.body).length ===0){
+            res = await  commentService.getAllList()
+        }else{
+            res = await commentService.getListBySome(name,content)
+        }
+        ctx.body = res
+        await  next()
+    }
 }
 
 
