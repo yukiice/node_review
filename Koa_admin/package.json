@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@koa/multer": "^3.0.0",
     "crypto-js": "^4.1.1",
     "dotenv": "^10.0.0",
     "fs": "^0.0.1-security",
@@ -11,7 +12,9 @@
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "koa-logger": "^3.2.1",
+    "koa-multer": "^1.0.2",
     "koa-router": "^10.1.1",
+    "multer": "^1.4.4",
     "mysql2": "^2.3.3"
   }
 }
